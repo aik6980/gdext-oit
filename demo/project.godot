@@ -10,6 +10,7 @@ config_version=5
 
 [application]
 
-config/name="godot cpp template"
-config/features=PackedStringArray("4.1", "Forward Plus")
+config/name="OIT Extension Demo"
+run/main_scene="uid://kl13oov1q2xb"
+config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"

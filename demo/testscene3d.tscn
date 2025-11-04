@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://kl13oov1q2xb"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_m7xna"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qgqgp"]
+albedo_color = Color(0.3882353, 0.5647059, 0.3882353, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_bq6yv"]
+material = SubResource("StandardMaterial3D_qgqgp")
+
+[sub_resource type="SphereMesh" id="SphereMesh_m7xna"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m7xna"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_color = Color(0.2, 0.8, 1, 0.3)
+
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_qgqgp"]
+
+[node name="Testscene3d" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.95128816, -0.30830315, 0, 0.30830315, 0.95128816, 0.68009245, 0.9528712, 1.040005)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = SubResource("BoxMesh_m7xna")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(50, 0, 0, 0, 0.1, 0, 0, 0, 50, -4.4584274e-05, 0.0017894506, -0.001345396)
+mesh = SubResource("BoxMesh_bq6yv")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.3523318, 0.9358752, 0, -0.9358752, -0.3523318, -0.005012512, 5.703341, -8.120218)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.85259897, 1.0637009, -5.1575465)
+mesh = SubResource("SphereMesh_m7xna")
+
+[node name="Camera3D2" type="Camera3D" parent="."]
+transform = Transform3D(0.30012888, 0.2162273, -0.9290686, 0.058601987, 0.9679508, 0.24420749, 0.9520971, -0.12773897, 0.2778386, -6.3757305, 3.2113945, 0)
+current = true
+
+[node name="FroxelVisualizer" type="FroxelVisualizer" parent="." node_paths=PackedStringArray("camera")]
+camera = NodePath("../Camera3D")
+material_override = SubResource("StandardMaterial3D_m7xna")
+mesh = SubResource("ImmediateMesh_qgqgp")
